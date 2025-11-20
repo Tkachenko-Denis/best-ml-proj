@@ -16,13 +16,13 @@ cd my-ml-project
 pip install -r requirements.txt
 ```
 
-##Запуск baseline-модели
+## Запуск baseline-модели
 
 ```bash
 python -m src.models.baseline
 ```
 
-##Стратегия ветвления
+## Стратегия ветвления
 
 В проекте используется GitHub Flow:
 
