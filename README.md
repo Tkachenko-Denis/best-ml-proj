@@ -6,8 +6,8 @@
 ## Установка
 
 ```bash
-git clone git@github.com:USERNAME/my-ml-project.git
-cd my-ml-project
+git clone git@github.com:Tkachenko-Denis/best-ml-proj.git
+cd best-ml-proj
 ```
 
 ###  При необходимости
