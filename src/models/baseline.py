@@ -5,6 +5,8 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 
 def load_dummy_data(n_samples: int = 1000, n_features: int = 10, random_state: int = 42):
@@ -20,12 +22,17 @@ def train_baseline_model():
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    model = LogisticRegression(max_iter=1000)
+    model = Pipeline(
+        steps=[
+            ("scaler", StandardScaler()),
+            ("clf", LogisticRegression(max_iter=1000)),
+        ]
+    )
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
-    print(f"Baseline accuracy: {acc:.4f}")
+    print(f"Improved baseline accuracy (with scaling): {acc:.4f}")
 
     models_path = Path("models")
     models_path.mkdir(exist_ok=True)
