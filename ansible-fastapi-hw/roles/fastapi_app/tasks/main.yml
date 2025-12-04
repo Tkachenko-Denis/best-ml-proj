@@ -1,0 +1,37 @@
+---
+- name: Create application directory
+  file:
+    path: /opt/fastapi_app
+    state: directory
+    mode: '0755'
+
+- name: Copy application files to server
+  copy:
+    src: "{{ item }}"
+    dest: /opt/fastapi_app/
+    mode: '0644'
+  loop:
+    - app/main.py
+    - app/requirements.txt
+    - app/Dockerfile
+
+- name: Build Docker image from Dockerfile
+  community.docker.docker_image:
+    name: fastapi
+    tag: latest
+    source: build
+    build:
+      path: /opt/fastapi_app
+      pull: yes
+    state: present
+    force_source: yes
+
+- name: Run FastAPI container
+  community.docker.docker_container:
+    name: fastapi_container
+    image: fastapi:latest
+    state: started
+    restart_policy: always
+    ports:
+      - "80:8000"
+    detach: yes

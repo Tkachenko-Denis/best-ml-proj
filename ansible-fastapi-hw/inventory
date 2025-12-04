@@ -1,0 +1,5 @@
+[webservers]
+fastapi-server ansible_host=51.250.87.142 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+[webservers:vars]
+ansible_python_interpreter=/usr/bin/python3
