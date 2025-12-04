@@ -1,0 +1,25 @@
+# Yandex Cloud credentials
+yc_token  = "<oauth-token>"
+cloud_id  = "b1gv8qh7j3k2m9n4p5r6"
+folder_id = "b1g3f8k9m2n7p4q1s5t8"
+
+# Network configuration
+zone        = "ru-central1-a"
+subnet_cidr = "10.128.0.0/24"
+
+# Storage configuration
+bucket_name        = "firewatch-ml-data-2024-prod"
+storage_access_key = "<storage-access-key>"
+storage_secret_key = "<storage-secret-key>"
+
+# VM configuration
+vm_cores    = 2
+vm_memory   = 2
+disk_size   = 20
+preemptible = false
+
+# SSH key path
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
+# Environment
+environment = "dev"
