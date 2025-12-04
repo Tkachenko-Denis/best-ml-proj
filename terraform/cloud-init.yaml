@@ -1,0 +1,25 @@
+#cloud-config
+
+users:
+  - name: ubuntu
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ${ssh_key}
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+  - git
+  - vim
+
+runcmd:
+  - echo "FireWatch.ai VM initialized" > /var/log/cloud-init-firewatch.log
+  - timedatectl set-timezone Europe/Moscow
