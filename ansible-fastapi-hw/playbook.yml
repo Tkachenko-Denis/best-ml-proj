@@ -1,0 +1,8 @@
+---
+- name: Deploy FastAPI application with Docker
+  hosts: webservers
+  become: yes
+  
+  roles:
+    - docker
+    - fastapi_app
