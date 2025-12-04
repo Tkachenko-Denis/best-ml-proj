@@ -98,23 +98,6 @@ ansible/
 - `python_version: "3.10"` - версия Python
 - `app_dir: /opt/firewatch` - директория приложения
 
-## Troubleshooting
-
-### Ошибка подключения SSH
-```bash
-# Проверьте доступность хоста
-ping 51.250.87.142
-
-# Проверьте SSH ключ
-ssh -i ~/.ssh/id_rsa ubuntu@51.250.87.142
-```
-
-### Ошибка прав доступа
-```bash
-# Убедитесь, что пользователь ubuntu имеет sudo права
-ansible firewatch_servers -m shell -a "sudo whoami"
-```
-
 ## Интеграция с Terraform
 
 После `terraform apply` автоматически обновить inventory:
