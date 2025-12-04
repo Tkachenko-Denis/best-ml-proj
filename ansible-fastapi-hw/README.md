@@ -190,42 +190,11 @@ ansible-playbook playbook.yml --syntax-check
 ansible-playbook playbook.yml --list-tasks
 ```
 
-## Troubleshooting
-
-### Ошибка: "docker: command not found"
-
-Убедитесь, что роль docker выполнилась успешно:
-```bash
-ansible webservers -m shell -a "which docker"
-```
-
-### Ошибка: "Cannot connect to the Docker daemon"
-
-Проверьте статус Docker службы:
-```bash
-ansible webservers -m shell -a "systemctl status docker"
-```
-
-### Порт 80 уже занят
-
-Измените проброс портов в `roles/fastapi_app/tasks/main.yml`:
-```yaml
-ports:
-  - "8080:8000"  # Используйте другой порт
-```
-
-### Контейнер не запускается
-
-Проверьте логи:
-```bash
-ansible webservers -m shell -a "docker logs fastapi_container"
-```
-
 ## Расширение функционала
 
 ### Добавление переменных
 
-Создайте `group_vars/webservers.yml`:
+В `group_vars/webservers.yml`:
 ```yaml
 app_port: 80
 container_name: fastapi_container
